@@ -24,13 +24,13 @@ if error:
     st.stop()
 
 
-@st.experimental_dialog("Enter your API key")
-def get_api_key():
-    api_key = st.text_input("API Key", type="password")
-    if st.button("Submit"):
-        st.session_state["api_key"] = api_key
-        st.rerun()
-    # set API key secret from .streamlit/secrets.toml
+# @st.experimental_dialog("Enter your API key")
+# def get_api_key():
+#     api_key = st.text_input("API Key", type="password")
+#     if st.button("Submit"):
+#         st.session_state["api_key"] = api_key
+#         st.rerun()
+#     # set API key secret from .streamlit/secrets.toml
 
 
 if "NEXTMV_API_KEY" in st.secrets and st.secrets["NEXTMV_API_KEY"] is not None:
