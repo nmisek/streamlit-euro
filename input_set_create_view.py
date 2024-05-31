@@ -127,14 +127,6 @@ def random_string(length):
     return "".join(random.choice(letters) for i in range(length))
 
 
-# set API key secret from .streamlit/secrets.toml
-if st.secrets["NEXTMV_API_KEY"] is not None:
-    st.session_state["api_key"] = st.secrets["NEXTMV_API_KEY"]
-if "api_key" not in st.session_state:
-    get_api_key()
-    st.stop()
-
-api_key = st.session_state["api_key"]
 headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
 
 if api_base_url == "":
