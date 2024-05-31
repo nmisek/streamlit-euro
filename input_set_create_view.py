@@ -180,8 +180,8 @@ with st.form(key="worker_availability_form"):
         end_datetime = end_datetime.replace(tzinfo=timezone)
 
         new_availability = {
-            "start": start_datetime.isoformat(),
-            "end": end_datetime.isoformat(),
+            "start": start_datetime.strftime("%Y-%m-%dT%H:%M:%S%z"),
+            "end": end_datetime.strftime("%Y-%m-%dT%H:%M:%S%z"),
         }
 
         if append_availability:
