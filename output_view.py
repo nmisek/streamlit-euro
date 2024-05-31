@@ -1,7 +1,6 @@
 from urllib.parse import unquote
 
-import matplotlib.pyplot as plt
-import numpy
+import altair as alt
 import pandas
 import requests as req
 import streamlit as st
@@ -60,30 +59,27 @@ for approach in solutions:
     approach_data["approach"] = approach
     df = pandas.concat([df, approach_data])
 
-fig, ax = plt.subplots()
-
-for approach in df["approach"].unique():
-    approach_data = df[df["approach"] == approach]
-    ax.scatter(approach_data["count"], approach_data["forecast"], label=approach)
-
-ax.legend()
-
-# label the axes
-plt.xlabel("Actuals")
-plt.ylabel("Forecast")
-
-# add a trendline by approach
-for approach in df["approach"].unique():
-    approach_data = df[df["approach"] == approach]
-    z = numpy.polyfit(approach_data["count"], approach_data["forecast"], 1)
-    p = numpy.poly1d(z)
-    plt.plot(
-        approach_data["forecast"],
-        p(approach_data["forecast"]),
-        label=f"{approach} trendline",
+# Create scatter plot
+scatter = (
+    alt.Chart(df)
+    .mark_circle(size=60)
+    .encode(
+        x="count",
+        y="forecast",
+        color="approach",
+        tooltip=["count", "forecast", "approach"],
     )
+)
 
-# add the line y=x for reference
-maxVal = max(df["count"].max(), df["forecast"].max())
-plt.plot([0, maxVal], [0, maxVal], color="black", linestyle="--")
-st.pyplot(fig)
+# Create trendline
+trendline = scatter.transform_regression(
+    "count", "forecast", groupby=["approach"]
+).mark_line()
+
+# Combine scatter plot and trendline
+chart = scatter + trendline
+
+# Make the chart interactive
+chart = chart.interactive()
+
+st.altair_chart(chart)
