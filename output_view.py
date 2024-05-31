@@ -5,6 +5,8 @@ import pandas
 import requests as req
 import streamlit as st
 
+st.set_page_config(layout="wide")
+
 query_params = st.query_params
 
 app_id = query_params.get("app_id")
@@ -32,13 +34,16 @@ def get_api_key():
 
 
 # set API key secret from .streamlit/secrets.toml
-if st.secrets["NEXTMV_API_KEY"] is not None or st.secrets["NEXTMV_API_KEY"] != "":
-    st.session_state["api_key"] = st.secrets["NEXTMV_API_KEY"]
-if "api_key" not in st.session_state:
-    get_api_key()
-    st.stop()
+# use either secret if it exists or dialog to get API key
+# check if it's in st.secrets first
+# initialize st.session_state["api_key"] if it's not there
+# if it's there, use it
 
-api_key = st.session_state["api_key"]
+# get api key from secrets
+api_key = st.secrets["NEXTMV_API_KEY"]
+if api_key is None or api_key == "":
+    get_api_key()
+
 headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
 
 if api_base_url == "":
@@ -71,6 +76,9 @@ scatter = (
     )
 )
 
+# widen plot
+scatter = scatter.properties(width=800)
+
 # Create trendline
 trendline = scatter.transform_regression(
     "count", "forecast", groupby=["approach"]
@@ -81,5 +89,26 @@ chart = scatter + trendline
 
 # Make the chart interactive
 chart = chart.interactive()
-
 st.altair_chart(chart)
+
+# compute the residuals
+df["residual"] = df["count"] - df["forecast"]
+
+# histogram of the residuals colored by approach
+bin_size = st.slider(
+    "Select bin size for histogram", min_value=1, max_value=100, value=20
+)
+
+
+histogram = (
+    alt.Chart(df)
+    .mark_bar(opacity=0.75)
+    .encode(
+        x=alt.X("residual", bin=alt.Bin(step=bin_size), title="Residuals"),
+        y="count()",
+        color="approach",
+    )
+)
+
+histogram = histogram.properties(width=800)
+st.altair_chart(histogram)
