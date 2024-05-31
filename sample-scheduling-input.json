@@ -1,0 +1,683 @@
+{
+  "workers": [
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T12:00:00-05:00",
+          "end": "2024-04-15T21:59:00-05:00"
+        }
+      ],
+      "id": "yawning-lemur"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T18:00:00-05:00",
+          "end": "2024-04-15T23:59:00-05:00"
+        }
+      ],
+      "id": "cantankerous-chinchilla"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T10:00:00-05:00",
+          "end": "2024-04-15T22:59:00-05:00"
+        }
+      ],
+      "id": "enigmatic-toucan"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T12:00:00-05:00",
+          "end": "2024-04-15T15:59:00-05:00"
+        }
+      ],
+      "id": "sesquipedalian-peacock"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T12:00:00-05:00",
+          "end": "2024-04-15T14:59:00-05:00"
+        }
+      ],
+      "id": "ubiquitous-capuchin-monkey"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T07:00:00-05:00",
+          "end": "2024-04-15T08:59:00-05:00"
+        }
+      ],
+      "id": "dapper-flamingo"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T13:00:00-05:00",
+          "end": "2024-04-15T15:59:00-05:00"
+        }
+      ],
+      "id": "flabbergasted-blobfish"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T19:00:00-05:00",
+          "end": "2024-04-15T20:59:00-05:00"
+        }
+      ],
+      "id": "turbulent-blobfish"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T07:00:00-05:00",
+          "end": "2024-04-15T07:59:00-05:00"
+        }
+      ],
+      "id": "sesquipedalian-platypus"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T08:00:00-05:00",
+          "end": "2024-04-15T18:59:00-05:00"
+        }
+      ],
+      "id": "munificent-quokka"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T07:00:00-05:00",
+          "end": "2024-04-15T14:59:00-05:00"
+        }
+      ],
+      "id": "flabbergasted-manatee"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T10:00:00-05:00",
+          "end": "2024-04-15T12:59:00-05:00"
+        }
+      ],
+      "id": "frivolous-binturong"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T17:00:00-05:00",
+          "end": "2024-04-15T18:59:00-05:00"
+        }
+      ],
+      "id": "vainglorious-koala"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T09:00:00-05:00",
+          "end": "2024-04-15T10:59:00-05:00"
+        }
+      ],
+      "id": "lachrymose-mandrill"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T12:00:00-05:00",
+          "end": "2024-04-15T13:59:00-05:00"
+        }
+      ],
+      "id": "omnipotent-otter"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T22:00:00-05:00",
+          "end": "2024-04-15T23:59:00-05:00"
+        }
+      ],
+      "id": "ubiquitous-ostrich"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T15:00:00-05:00",
+          "end": "2024-04-15T23:59:00-05:00"
+        }
+      ],
+      "id": "frivolous-otter"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T17:00:00-05:00",
+          "end": "2024-04-15T19:59:00-05:00"
+        }
+      ],
+      "id": "vivacious-mandrill"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T08:00:00-05:00",
+          "end": "2024-04-15T18:59:00-05:00"
+        }
+      ],
+      "id": "gibbous-okapi"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T12:00:00-05:00",
+          "end": "2024-04-15T13:59:00-05:00"
+        }
+      ],
+      "id": "delirious-guinea-pig"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T13:00:00-05:00",
+          "end": "2024-04-15T21:59:00-05:00"
+        }
+      ],
+      "id": "aberrant-giraffe"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T08:00:00-05:00",
+          "end": "2024-04-15T16:59:00-05:00"
+        }
+      ],
+      "id": "lugubrious-sloth"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T11:00:00-05:00",
+          "end": "2024-04-15T23:59:00-05:00"
+        }
+      ],
+      "id": "enigmatic-aardvark"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T10:00:00-05:00",
+          "end": "2024-04-15T13:59:00-05:00"
+        }
+      ],
+      "id": "loquacious-star-nosed-mole"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T07:00:00-05:00",
+          "end": "2024-04-15T16:59:00-05:00"
+        }
+      ],
+      "id": "rambunctious-binturong"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T08:00:00-05:00",
+          "end": "2024-04-15T14:59:00-05:00"
+        }
+      ],
+      "id": "lugubrious-toucan"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T07:00:00-05:00",
+          "end": "2024-04-15T16:59:00-05:00"
+        }
+      ],
+      "id": "sesquipedalian-sea-otter"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T08:00:00-05:00",
+          "end": "2024-04-15T22:59:00-05:00"
+        }
+      ],
+      "id": "dapper-porcupine"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T12:00:00-05:00",
+          "end": "2024-04-15T17:59:00-05:00"
+        }
+      ],
+      "id": "lachrymose-tapir"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T11:00:00-05:00",
+          "end": "2024-04-15T17:59:00-05:00"
+        }
+      ],
+      "id": "whimsical-fennec-fox"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T21:00:00-05:00",
+          "end": "2024-04-15T21:59:00-05:00"
+        }
+      ],
+      "id": "pernicious-kangaroo"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T09:00:00-05:00",
+          "end": "2024-04-15T12:59:00-05:00"
+        }
+      ],
+      "id": "munificent-binturong"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T12:00:00-05:00",
+          "end": "2024-04-15T14:59:00-05:00"
+        }
+      ],
+      "id": "enigmatic-narwhal"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T21:00:00-05:00",
+          "end": "2024-04-15T22:59:00-05:00"
+        }
+      ],
+      "id": "turbulent-quokka"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T08:00:00-05:00",
+          "end": "2024-04-15T14:59:00-05:00"
+        }
+      ],
+      "id": "munificent-hippopotamus"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T14:00:00-05:00",
+          "end": "2024-04-15T23:59:00-05:00"
+        }
+      ],
+      "id": "bombastic-hedgehog"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T18:00:00-05:00",
+          "end": "2024-04-15T19:59:00-05:00"
+        }
+      ],
+      "id": "perspicacious-flamingo"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T18:00:00-05:00",
+          "end": "2024-04-15T21:59:00-05:00"
+        }
+      ],
+      "id": "nebulous-koala"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T14:00:00-05:00",
+          "end": "2024-04-15T19:59:00-05:00"
+        }
+      ],
+      "id": "loquacious-proboscis-monkey"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T07:00:00-05:00",
+          "end": "2024-04-15T23:59:00-05:00"
+        }
+      ],
+      "id": "recalcitrant-hippopotamus"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T15:00:00-05:00",
+          "end": "2024-04-15T18:59:00-05:00"
+        }
+      ],
+      "id": "frivolous-chinchilla"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T13:00:00-05:00",
+          "end": "2024-04-15T21:59:00-05:00"
+        }
+      ],
+      "id": "vainglorious-okapi"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T07:00:00-05:00",
+          "end": "2024-04-15T10:59:00-05:00"
+        }
+      ],
+      "id": "pernicious-mandrill"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T09:00:00-05:00",
+          "end": "2024-04-15T18:59:00-05:00"
+        }
+      ],
+      "id": "beneficent-axolotl"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T15:00:00-05:00",
+          "end": "2024-04-15T16:59:00-05:00"
+        }
+      ],
+      "id": "hapless-bush-baby"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T09:00:00-05:00",
+          "end": "2024-04-15T11:59:00-05:00"
+        }
+      ],
+      "id": "rapscallion-star-nosed-mole"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T12:00:00-05:00",
+          "end": "2024-04-15T12:59:00-05:00"
+        }
+      ],
+      "id": "bucolic-chinchilla"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T09:00:00-05:00",
+          "end": "2024-04-15T17:59:00-05:00"
+        }
+      ],
+      "id": "quixotic-lemur"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T08:00:00-05:00",
+          "end": "2024-04-15T16:59:00-05:00"
+        }
+      ],
+      "id": "delirious-chinchilla"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T12:00:00-05:00",
+          "end": "2024-04-15T15:59:00-05:00"
+        }
+      ],
+      "id": "sesquipedalian-sugar-glider"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T10:00:00-05:00",
+          "end": "2024-04-15T16:59:00-05:00"
+        }
+      ],
+      "id": "jocular-chinchilla"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T12:00:00-05:00",
+          "end": "2024-04-15T16:59:00-05:00"
+        }
+      ],
+      "id": "kaleidoscopic-bush-baby"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T13:00:00-05:00",
+          "end": "2024-04-15T17:59:00-05:00"
+        }
+      ],
+      "id": "ebullient-lemur"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T08:00:00-05:00",
+          "end": "2024-04-15T16:59:00-05:00"
+        }
+      ],
+      "id": "effervescent-wombat"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T11:00:00-05:00",
+          "end": "2024-04-15T12:59:00-05:00"
+        }
+      ],
+      "id": "munificent-porcupine"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T13:00:00-05:00",
+          "end": "2024-04-15T22:59:00-05:00"
+        }
+      ],
+      "id": "querulous-proboscis-monkey"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T07:00:00-05:00",
+          "end": "2024-04-15T18:59:00-05:00"
+        }
+      ],
+      "id": "beneficent-dik-dik"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T19:00:00-05:00",
+          "end": "2024-04-15T20:59:00-05:00"
+        }
+      ],
+      "id": "ubiquitous-walrus"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T11:00:00-05:00",
+          "end": "2024-04-15T12:59:00-05:00"
+        }
+      ],
+      "id": "ubiquitous-chinchilla"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T10:00:00-05:00",
+          "end": "2024-04-15T22:59:00-05:00"
+        }
+      ],
+      "id": "bombastic-sloth"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T09:00:00-05:00",
+          "end": "2024-04-15T15:59:00-05:00"
+        }
+      ],
+      "id": "farcical-quokka"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T11:00:00-05:00",
+          "end": "2024-04-15T20:59:00-05:00"
+        }
+      ],
+      "id": "perspicacious-red-panda"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T12:00:00-05:00",
+          "end": "2024-04-15T18:59:00-05:00"
+        }
+      ],
+      "id": "rambunctious-pangolin"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T11:00:00-05:00",
+          "end": "2024-04-15T15:59:00-05:00"
+        }
+      ],
+      "id": "whimsical-axolotl"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T09:00:00-05:00",
+          "end": "2024-04-15T10:59:00-05:00"
+        }
+      ],
+      "id": "frivolous-red-panda"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T08:00:00-05:00",
+          "end": "2024-04-15T21:59:00-05:00"
+        }
+      ],
+      "id": "beneficent-red-panda"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T10:00:00-05:00",
+          "end": "2024-04-15T20:59:00-05:00"
+        }
+      ],
+      "id": "turbulent-mandrill"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T10:00:00-05:00",
+          "end": "2024-04-15T21:59:00-05:00"
+        }
+      ],
+      "id": "zealous-blobfish"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T11:00:00-05:00",
+          "end": "2024-04-15T14:59:00-05:00"
+        }
+      ],
+      "id": "obstreperous-naked-mole-rat"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T11:00:00-05:00",
+          "end": "2024-04-15T18:59:00-05:00"
+        }
+      ],
+      "id": "vivacious-guinea-pig"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T11:00:00-05:00",
+          "end": "2024-04-15T22:59:00-05:00"
+        }
+      ],
+      "id": "ebullient-red-panda"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T09:00:00-05:00",
+          "end": "2024-04-15T13:59:00-05:00"
+        }
+      ],
+      "id": "vivacious-giraffe"
+    },
+    {
+      "availability": [
+        {
+          "start": "2024-04-15T15:00:00-05:00",
+          "end": "2024-04-15T19:59:00-05:00"
+        }
+      ],
+      "id": "cacophonous-capuchin-monkey"
+    }
+  ],
+  "required_workers": [
+    {
+      "start": "2024-04-15T09:00:00-05:00",
+      "end": "2024-04-15T12:59:00-05:00",
+      "count": 11
+    },
+    {
+      "start": "2024-04-15T13:00:00-05:00",
+      "end": "2024-04-15T16:59:00-05:00",
+      "count": 49
+    },
+    {
+      "start": "2024-04-15T17:00:00-05:00",
+      "end": "2024-04-15T20:59:00-05:00",
+      "count": 65
+    },
+    {
+      "start": "2024-04-15T21:00:00-05:00",
+      "end": "2024-04-15T23:59:00-05:00",
+      "count": 32
+    }
+  ]
+}
