@@ -5,7 +5,7 @@ import pandas
 import requests as req
 import streamlit as st
 
-from token_handler import token_state_init, sendTokenRefreshMessageToParent
+from token_handler import init_auth_state, sendTokenRefreshMessageToParent
 
 st.set_page_config(layout="wide")
 
@@ -15,7 +15,7 @@ app_id = query_params.get("app_id")
 run_id = query_params.get("run_id")
 api_base_url = unquote(query_params.get("url", ""))
 
-token_state_init()
+init_auth_state()
 
 error = False
 
@@ -52,16 +52,14 @@ if error:
 # if api_key is None or api_key == "":
 #     get_api_key()
 
-token = st.session_state.token
-account = st.session_state.account
 
-headers = {"Authorization": f"Bearer {token}", "nextmv-account": account, "Content-Type": "application/json"}
+headers = st.session_state.headers
 
 runs_url = f"{api_base_url}/v1/applications/{app_id}/runs/{run_id}"
 
 response = req.get(runs_url, headers=headers)
 
-if response.status_code == 403 or response.status_code == 401:
+if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
     sendTokenRefreshMessageToParent()
     st.stop()
 

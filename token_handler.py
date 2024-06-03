@@ -1,7 +1,12 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-def token_state_init():
+def init_auth_state():
+    if "NEXTMV_API_KEY" in st.secrets:
+        api_key = st.secrets["NEXTMV_API_KEY"]
+        st.session_state.api_key = st.secrets["NEXTMV_API_KEY"]
+        st.session_state.headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+        st.session_state.token_init_complete = True
     if "token_init_complete" not in st.session_state or not st.session_state.token_init_complete:
             
         # Get the query parameters
@@ -18,24 +23,19 @@ def token_state_init():
         st.session_state.token_expired = False
         st.session_state.token_refresh_count = 0
         st.session_state.token_init_complete = True
+        st.session_state.headers = {"Authorization": f"Bearer {token}", "nextmv-account": account, "Content-Type": "application/json"}
 
 
 def sendTokenRefreshMessageToParent():
     post_message_script = """
     <script>
-        console.log("Sending token refresh message to parent 2")
         // Send a postMessage event with the message
         const message = {
             type: "NEXTMV_TOKEN_REFRESH",
         };
         window.parent.parent.parent.postMessage(message, '*');
-        console.log("Message sent to parent 2")
     </script>
     """
 
     components.html(post_message_script)
-
-# def sendTokenRefreshMessageToParent():
-#     st.write("Sending token refresh message to parent")
-#     components.html("<script>sendTokenRefreshMessageToParent()</script>", height=0)
 

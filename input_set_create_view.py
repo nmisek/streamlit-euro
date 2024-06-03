@@ -10,7 +10,7 @@ import requests
 import streamlit as st
 from dateutil.parser import parse
 
-from token_handler import token_state_init, sendTokenRefreshMessageToParent
+from token_handler import init_auth_state, sendTokenRefreshMessageToParent
 
 query_params = st.query_params
 
@@ -46,12 +46,9 @@ if error:
 
 # api_key = st.session_state["api_key"]
 
-token_state_init()
+init_auth_state()
 
-token = st.session_state.token
-account = st.session_state.account
-
-headers = {"Authorization": f"Bearer {token}", "nextmv-account": account, "Content-Type": "application/json"}
+headers = st.session_state.headers
 
 
 def serialize_input(data):
@@ -70,7 +67,7 @@ def create_input(data_scenario, headers, id, name):
     # get an upload url
     upload_url = f"{api_base_url}/v1/applications/{app_id}/runs/uploadurl"
     response = requests.post(upload_url, headers=headers)
-    if response.status_code == 403 or response.status_code == 401:
+    if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
         sendTokenRefreshMessageToParent()
         st.stop()
 
@@ -85,7 +82,7 @@ def create_input(data_scenario, headers, id, name):
         url=response_json["upload_url"],
         data=serialize_input(data_scenario),
     )
-    if response.status_code == 403 or response.status_code == 401:
+    if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
         sendTokenRefreshMessageToParent()
         st.stop()
 
@@ -98,7 +95,7 @@ def create_input(data_scenario, headers, id, name):
         "format": {"input": {"type": "json"}},
     }
     response = requests.post(url=input_url, headers=headers, data=json.dumps(payload))
-    if response.status_code == 403 or response.status_code == 401:
+    if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
         sendTokenRefreshMessageToParent()
         st.stop()
 
@@ -135,7 +132,7 @@ def create_input_set(scenario_inputs):
     response = requests.post(
         url=input_set_url, headers=headers, data=json.dumps(payload)
     )
-    if response.status_code == 403 or response.status_code == 401:
+    if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
         sendTokenRefreshMessageToParent()
         st.stop()
     if response.status_code == 200:
@@ -221,7 +218,7 @@ st.subheader("Select app to use for demand forecasts: ")
 # dropdown list of apps from the Nextmv API
 apps_url = f"{api_base_url}/v1/applications"
 response = requests.get(apps_url, headers=headers)
-if response.status_code == 403 or response.status_code == 401:
+if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
     sendTokenRefreshMessageToParent()
     st.stop()
 apps = response.json()
@@ -230,7 +227,7 @@ demand_forecast_app_id = st.selectbox("Select app", [app["id"] for app in apps])
 # dropdown list of past runs of the demand forecasting app
 runs_url = f"{api_base_url}/v1/applications/{demand_forecast_app_id}/runs"
 response = requests.get(runs_url, headers=headers)
-if response.status_code == 403 or response.status_code == 401:
+if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
     sendTokenRefreshMessageToParent()
     st.stop()
 runs = response.json()["runs"]
@@ -282,7 +279,7 @@ if col2.button("Select run and create input set"):
         f"{api_base_url}/v1/applications/{demand_forecast_app_id}/runs/{selected_run}"
     )
     response = requests.get(result_url, headers=headers)
-    if response.status_code == 403 or response.status_code == 401:
+    if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
         sendTokenRefreshMessageToParent()
         st.stop()
     result = response.json()
