@@ -194,9 +194,7 @@ with st.form(key="worker_availability_form"):
     worker_id = st.selectbox("Worker ID", workers["id"].tolist())
     availability_start = st.time_input("Availability Start")
     availability_end = st.time_input("Availability End")
-    timezone_offset = st.number_input(
-        "Timezone Offset", min_value=-12, max_value=14, value=-5
-    )
+
     append_availability = st.checkbox("Append to existing availabilities", value=True)
 
     submit_button = st.form_submit_button(label="Update Availability")
