@@ -165,7 +165,8 @@ with open("sample-scheduling-input.json") as f:
     sample = json.load(f)
     workers = pandas.DataFrame(sample["workers"])
 
-date = st.date_input("Date of the Schedule:")
+
+date = st.date_input("Date of the Schedule:", date(2024, 11, 14))
 timezone_offset = st.number_input(
     "Timezone Offset", min_value=-12, max_value=14, value=-5
 )
@@ -178,9 +179,6 @@ for i in range(len(workers)):
 
         start_datetime = datetime.combine(date, start_time)
         end_datetime = datetime.combine(date, end_time)
-
-        # workers["availability"][i][j]["start"] = start_datetime.isoformat()
-        # workers["availability"][i][j]["end"] = end_datetime.isoformat()
 
         timezone = timezone_offset * 3600
 
