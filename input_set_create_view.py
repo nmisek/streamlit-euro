@@ -10,7 +10,7 @@ import requests
 import streamlit as st
 from dateutil.parser import parse
 
-from token_handler inport token_state_init, sendTokenRefreshMessageToParent
+from token_handler import token_state_init, sendTokenRefreshMessageToParent
 
 query_params = st.query_params
 
@@ -21,6 +21,9 @@ error = False
 
 if app_id is None or app_id == "":
     app_id = "my-scheds"
+
+if api_base_url == "" or api_base_url is None:
+    api_base_url = "https://us1.api.staging.nxmv.xyz"
 
 if error:
     st.stop()
@@ -67,7 +70,7 @@ def create_input(data_scenario, headers, id, name):
     # get an upload url
     upload_url = f"{api_base_url}/v1/applications/{app_id}/runs/uploadurl"
     response = requests.post(upload_url, headers=headers)
-    if response.status_code != 403 or response.status_code != 401:
+    if response.status_code == 403 or response.status_code == 401:
         sendTokenRefreshMessageToParent()
         st.stop()
 
@@ -82,7 +85,7 @@ def create_input(data_scenario, headers, id, name):
         url=response_json["upload_url"],
         data=serialize_input(data_scenario),
     )
-    if response.status_code != 403 or response.status_code != 401:
+    if response.status_code == 403 or response.status_code == 401:
         sendTokenRefreshMessageToParent()
         st.stop()
 
@@ -95,7 +98,7 @@ def create_input(data_scenario, headers, id, name):
         "format": {"input": {"type": "json"}},
     }
     response = requests.post(url=input_url, headers=headers, data=json.dumps(payload))
-    if response.status_code != 403 or response.status_code != 401:
+    if response.status_code == 403 or response.status_code == 401:
         sendTokenRefreshMessageToParent()
         st.stop()
 
@@ -132,7 +135,7 @@ def create_input_set(scenario_inputs):
     response = requests.post(
         url=input_set_url, headers=headers, data=json.dumps(payload)
     )
-    if response.status_code != 403 or response.status_code != 401:
+    if response.status_code == 403 or response.status_code == 401:
         sendTokenRefreshMessageToParent()
         st.stop()
     if response.status_code == 200:
@@ -148,11 +151,6 @@ def random_string(length):
     letters = string.ascii_lowercase
     return "".join(random.choice(letters) for i in range(length))
 
-
-headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-
-if api_base_url == "":
-    api_base_url = "https://api.cloud.nextmv.io"
 
 st.header("Generate input set for shift scheduling model:")
 
@@ -223,7 +221,7 @@ st.subheader("Select app to use for demand forecasts: ")
 # dropdown list of apps from the Nextmv API
 apps_url = f"{api_base_url}/v1/applications"
 response = requests.get(apps_url, headers=headers)
-if response.status_code != 403 or response.status_code != 401:
+if response.status_code == 403 or response.status_code == 401:
     sendTokenRefreshMessageToParent()
     st.stop()
 apps = response.json()
@@ -232,7 +230,7 @@ demand_forecast_app_id = st.selectbox("Select app", [app["id"] for app in apps])
 # dropdown list of past runs of the demand forecasting app
 runs_url = f"{api_base_url}/v1/applications/{demand_forecast_app_id}/runs"
 response = requests.get(runs_url, headers=headers)
-if response.status_code != 403 or response.status_code != 401:
+if response.status_code == 403 or response.status_code == 401:
     sendTokenRefreshMessageToParent()
     st.stop()
 runs = response.json()["runs"]
@@ -284,7 +282,7 @@ if col2.button("Select run and create input set"):
         f"{api_base_url}/v1/applications/{demand_forecast_app_id}/runs/{selected_run}"
     )
     response = requests.get(result_url, headers=headers)
-    if response.status_code != 403 or response.status_code != 401:
+    if response.status_code == 403 or response.status_code == 401:
         sendTokenRefreshMessageToParent()
         st.stop()
     result = response.json()

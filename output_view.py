@@ -5,7 +5,7 @@ import pandas
 import requests as req
 import streamlit as st
 
-from token_handler inport token_state_init, sendTokenRefreshMessageToParent
+from token_handler import token_state_init, sendTokenRefreshMessageToParent
 
 st.set_page_config(layout="wide")
 
@@ -24,6 +24,9 @@ if app_id is None or app_id == "":
 
 if run_id is None or run_id == "":
     run_id = "devint-BGS39HySR"
+
+if api_base_url == "" or api_base_url is None:
+    api_base_url = "https://us1.api.staging.nxmv.xyz"
 
 if error:
     st.stop()
@@ -54,9 +57,8 @@ account = st.session_state.account
 
 headers = {"Authorization": f"Bearer {token}", "nextmv-account": account, "Content-Type": "application/json"}
 
-if api_base_url == "":
-    api_base_url = "https://api.cloud.nextmv.io"
 runs_url = f"{api_base_url}/v1/applications/{app_id}/runs/{run_id}"
+
 response = req.get(runs_url, headers=headers)
 
 if response.status_code == 403 or response.status_code == 401:
