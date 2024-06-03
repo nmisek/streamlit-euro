@@ -67,7 +67,9 @@ def create_input(data_scenario, headers, id, name):
     # get an upload url
     upload_url = f"{api_base_url}/v1/applications/{app_id}/runs/uploadurl"
     response = requests.post(upload_url, headers=headers)
-    if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
+    if (
+        response.status_code == 403 or response.status_code == 401
+    ) and st.session_state.get("api_key") == None:
         sendTokenRefreshMessageToParent()
         st.stop()
 
@@ -82,7 +84,9 @@ def create_input(data_scenario, headers, id, name):
         url=response_json["upload_url"],
         data=serialize_input(data_scenario),
     )
-    if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
+    if (
+        response.status_code == 403 or response.status_code == 401
+    ) and st.session_state.get("api_key") == None:
         sendTokenRefreshMessageToParent()
         st.stop()
 
@@ -95,7 +99,9 @@ def create_input(data_scenario, headers, id, name):
         "format": {"input": {"type": "json"}},
     }
     response = requests.post(url=input_url, headers=headers, data=json.dumps(payload))
-    if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
+    if (
+        response.status_code == 403 or response.status_code == 401
+    ) and st.session_state.get("api_key") == None:
         sendTokenRefreshMessageToParent()
         st.stop()
 
@@ -132,7 +138,9 @@ def create_input_set(scenario_inputs):
     response = requests.post(
         url=input_set_url, headers=headers, data=json.dumps(payload)
     )
-    if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
+    if (
+        response.status_code == 403 or response.status_code == 401
+    ) and st.session_state.get("api_key") == None:
         sendTokenRefreshMessageToParent()
         st.stop()
     if response.status_code == 200:
@@ -198,8 +206,14 @@ with st.form(key="worker_availability_form"):
         # format times to "2024-04-15T12:00:00-05:00"
 
         new_availability = {
-            "start": start_datetime.strftime("%Y-%m-%dT%H:%M:%S%Z"),
-            "end": end_datetime.strftime("%Y-%m-%dT%H:%M:%S%Z"),
+            "start": start_datetime.strftime("%Y-%m-%dT%H:%M:%S")
+            + start_datetime.strftime("%z")[:3]
+            + ":"
+            + start_datetime.strftime("%z")[3:],
+            "end": end_datetime.strftime("%Y-%m-%dT%H:%M:%S")
+            + end_datetime.strftime("%z")[:3]
+            + ":"
+            + end_datetime.strftime("%z")[3:],
         }
 
         st.write(new_availability)
@@ -222,7 +236,9 @@ st.subheader("Select app to use for demand forecasts: ")
 # dropdown list of apps from the Nextmv API
 apps_url = f"{api_base_url}/v1/applications"
 response = requests.get(apps_url, headers=headers)
-if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
+if (
+    response.status_code == 403 or response.status_code == 401
+) and st.session_state.get("api_key") == None:
     sendTokenRefreshMessageToParent()
     st.stop()
 apps = response.json()
@@ -231,7 +247,9 @@ demand_forecast_app_id = st.selectbox("Select app", [app["id"] for app in apps])
 # dropdown list of past runs of the demand forecasting app
 runs_url = f"{api_base_url}/v1/applications/{demand_forecast_app_id}/runs"
 response = requests.get(runs_url, headers=headers)
-if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
+if (
+    response.status_code == 403 or response.status_code == 401
+) and st.session_state.get("api_key") == None:
     sendTokenRefreshMessageToParent()
     st.stop()
 runs = response.json()["runs"]
@@ -283,7 +301,9 @@ if col2.button("Select run and create input set"):
         f"{api_base_url}/v1/applications/{demand_forecast_app_id}/runs/{selected_run}"
     )
     response = requests.get(result_url, headers=headers)
-    if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
+    if (
+        response.status_code == 403 or response.status_code == 401
+    ) and st.session_state.get("api_key") == None:
         sendTokenRefreshMessageToParent()
         st.stop()
     result = response.json()
