@@ -195,10 +195,14 @@ with st.form(key="worker_availability_form"):
         start_datetime = start_datetime.replace(tzinfo=timezone)
         end_datetime = end_datetime.replace(tzinfo=timezone)
 
+        # format times to "2024-04-15T12:00:00-05:00"
+
         new_availability = {
-            "start": start_datetime.strftime("%Y-%m-%dT%H:%M:%S%z"),
-            "end": end_datetime.strftime("%Y-%m-%dT%H:%M:%S%z"),
+            "start": start_datetime.strftime("%Y-%m-%dT%H:%M:%S%Z"),
+            "end": end_datetime.strftime("%Y-%m-%dT%H:%M:%S%Z"),
         }
+
+        st.write(new_availability)
 
         if append_availability:
             # Append new availability to existing ones
