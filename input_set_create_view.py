@@ -166,6 +166,9 @@ with open("sample-scheduling-input.json") as f:
     workers = pandas.DataFrame(sample["workers"])
 
 date = st.date_input("Date of the Schedule:")
+timezone_offset = st.number_input(
+    "Timezone Offset", min_value=-12, max_value=14, value=-5
+)
 
 # edit all availabilities to the same date
 for i in range(len(workers)):
