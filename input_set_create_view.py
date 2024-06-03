@@ -172,7 +172,6 @@ timezone_offset = st.number_input(
 
 # edit all availabilities to the same date
 for i in range(len(workers)):
-    st.write("DATE", date)
     for j in range(len(workers["availability"][i])):
         start_time = parse(workers["availability"][i][j]["start"]).time()
         end_time = parse(workers["availability"][i][j]["end"]).time()
