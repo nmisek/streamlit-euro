@@ -168,6 +168,7 @@ date = st.date_input("Date of the Schedule:")
 
 # edit all availabilities to the same date
 for i in range(len(workers)):
+    st.write("DATE", date)
     for j in range(len(workers["availability"][i])):
         start_time = parse(workers["availability"][i][j]["start"]).time()
         end_time = parse(workers["availability"][i][j]["end"]).time()
@@ -175,8 +176,11 @@ for i in range(len(workers)):
         start_datetime = datetime.combine(date, start_time)
         end_datetime = datetime.combine(date, end_time)
 
-        workers["availability"][i][j]["start"] = start_datetime.isoformat()
-        workers["availability"][i][j]["end"] = end_datetime.isoformat()
+        # workers["availability"][i][j]["start"] = start_datetime.isoformat()
+        # workers["availability"][i][j]["end"] = end_datetime.isoformat()
+
+        workers["availability"][i][j]["start"] = start_datetime.replace(tzinfo=tzoffset(None, 0)).isoformat()
+        workers["availability"][i][j]["end"] = end_datetime.replace(tzinfo=tzoffset(None, 0)).isoformat()
 
 # Create a form for the user to input worker availability
 # TODO: make it possible to add more than 2 availabilities per worker
