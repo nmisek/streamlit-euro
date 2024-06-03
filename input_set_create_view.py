@@ -180,8 +180,12 @@ for i in range(len(workers)):
         # workers["availability"][i][j]["start"] = start_datetime.isoformat()
         # workers["availability"][i][j]["end"] = end_datetime.isoformat()
 
-        workers["availability"][i][j]["start"] = start_datetime.replace(tzinfo=tzoffset(None, 0)).isoformat()
-        workers["availability"][i][j]["end"] = end_datetime.replace(tzinfo=tzoffset(None, 0)).isoformat()
+        timezone = pytz.FixedOffset(
+            timezone_offset * 3600
+        )
+
+        workers["availability"][i][j]["start"] = start_datetime.replace(tzinfo=tzoffset(None, timezone)).isoformat()
+        workers["availability"][i][j]["end"] = end_datetime.replace(tzinfo=tzoffset(None, timezone)).isoformat()
 
 # Create a form for the user to input worker availability
 # TODO: make it possible to add more than 2 availabilities per worker
