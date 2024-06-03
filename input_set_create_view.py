@@ -183,9 +183,7 @@ for i in range(len(workers)):
         # workers["availability"][i][j]["start"] = start_datetime.isoformat()
         # workers["availability"][i][j]["end"] = end_datetime.isoformat()
 
-        timezone = pytz.FixedOffset(
-            timezone_offset * 3600
-        )
+        timezone = timezone_offset * 3600
 
         workers["availability"][i][j]["start"] = start_datetime.replace(tzinfo=tzoffset(None, timezone)).isoformat()
         workers["availability"][i][j]["end"] = end_datetime.replace(tzinfo=tzoffset(None, timezone)).isoformat()
