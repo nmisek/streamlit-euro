@@ -235,8 +235,9 @@ with st.form(key="worker_availability_form"):
             # Overwrite existing availabilities with the new one
             st.write(workers.loc[workers["id"] == worker_id, "availability"])
             st.write(new_availability)
-            workers.loc[workers["id"] == worker_id, "availability"] = [new_availability]
-
+            workers.loc[workers["id"] == worker_id, "availability"] = workers.loc[
+                workers["id"] == worker_id, "availability"
+            ].apply(lambda x: [new_availability])
     with st.container():
         st.table(workers)
 
