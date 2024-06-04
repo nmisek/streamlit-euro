@@ -115,5 +115,17 @@ histogram = (
     )
 )
 
+if "ensemble" in df["approach"].values:
+    # Create a histogram for the 'ensemble' approach with a black outline
+    histogram_ensemble = (
+        alt.Chart(df[df["approach"] == "ensemble"])
+        .mark_bar(color="transparent", stroke="black", strokeWidth=2)
+        .encode(
+            alt.X("residual", bin=True),
+            alt.Y("count()"),
+        )
+    )
+    histogram = alt.layer(histogram, histogram_ensemble)
+
 histogram = histogram.properties(width=800)
 st.altair_chart(histogram)
