@@ -77,6 +77,8 @@ for approach in solutions:
     approach_data["approach"] = approach
     df = pandas.concat([df, approach_data])
 
+df["line_width"] = df["approach"].apply(lambda x: 3 if x == "ensemble" else 1)
+
 line_graph = (
     alt.Chart(df)
     .mark_line()
@@ -84,6 +86,7 @@ line_graph = (
         x="count",
         y="forecast",
         color=alt.Color("approach", scale=alt.Scale(scheme="category10")),
+        size=alt.Size("line_width:Q", legend=None),
         tooltip=["count", "forecast", "approach"],
     )
 )
