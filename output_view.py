@@ -121,7 +121,7 @@ if "ensemble" in df["approach"].values:
         alt.Chart(df[df["approach"] == "ensemble"])
         .mark_bar(color="transparent", stroke="black", strokeWidth=2)
         .encode(
-            alt.X("residual", bin=True),
+            alt.X("residual", bin=alt.Bin(step=bin_size)),
             alt.Y("count()"),
         )
     )
