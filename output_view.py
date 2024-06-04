@@ -32,7 +32,6 @@ if error:
     st.stop()
 
 
-
 # @st.experimental_dialog("Enter your API key")
 # def get_api_key():
 #     api_key = st.text_input("API Key", type="password")
@@ -59,7 +58,9 @@ runs_url = f"{api_base_url}/v1/applications/{app_id}/runs/{run_id}"
 
 response = req.get(runs_url, headers=headers)
 
-if (response.status_code == 403 or response.status_code == 401) and st.session_state.get("api_key") == None:
+if (
+    response.status_code == 403 or response.status_code == 401
+) and st.session_state.get("api_key") == None:
     sendTokenRefreshMessageToParent()
     st.stop()
 
@@ -77,31 +78,32 @@ for approach in solutions:
     df = pandas.concat([df, approach_data])
 
 # Create scatter plot
-scatter = (
+line_graph = (
     alt.Chart(df)
-    .mark_circle(size=60)
+    .mark_line()
     .encode(
         x="count",
         y="forecast",
-        color="approach",
+        color=alt.Color("approach", scale=alt.Scale(scheme="category10")),
         tooltip=["count", "forecast", "approach"],
     )
 )
 
 # widen plot
-scatter = scatter.properties(width=800)
+line_graph = line_graph.properties(width=800)
 
-# Create trendline
-trendline = scatter.transform_regression(
-    "count", "forecast", groupby=["approach"]
-).mark_line()
+# # Create trendline
+# trendline = scatter.transform_regression(
+#     "count", "forecast", groupby=["approach"]
+# ).mark_line()
 
-# Combine scatter plot and trendline
-chart = scatter + trendline
+# # Combine scatter plot and trendline
+# chart = scatter + trendline
 
 # Make the chart interactive
-chart = chart.interactive()
-st.altair_chart(chart)
+# chart = chart.interactive()
+line_graph = line_graph.interactive()
+st.altair_chart(line_graph)
 
 # compute the residuals
 df["residual"] = df["count"] - df["forecast"]
