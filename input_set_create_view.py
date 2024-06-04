@@ -11,6 +11,7 @@ import streamlit as st
 from dateutil.parser import parse
 from dateutil.tz import tzoffset
 
+from token_handler import init_auth_state, sendTokenRefreshMessageToParent
 
 query_params = st.query_params
 
@@ -230,7 +231,6 @@ with st.form(key="worker_availability_form"):
             workers.loc[workers["id"] == worker_id, "availability"].apply(
                 lambda x: x.append(new_availability)
             )
-            st.write(workers.loc[workers["id"] == worker_id, "availability"])
         else:
             # Overwrite existing availabilities with the new one
             st.write(workers.loc[workers["id"] == worker_id, "availability"])
