@@ -77,7 +77,6 @@ for approach in solutions:
     approach_data["approach"] = approach
     df = pandas.concat([df, approach_data])
 
-# Create scatter plot
 line_graph = (
     alt.Chart(df)
     .mark_line()
@@ -91,17 +90,6 @@ line_graph = (
 
 # widen plot
 line_graph = line_graph.properties(width=800)
-
-# # Create trendline
-# trendline = scatter.transform_regression(
-#     "count", "forecast", groupby=["approach"]
-# ).mark_line()
-
-# # Combine scatter plot and trendline
-# chart = scatter + trendline
-
-# Make the chart interactive
-# chart = chart.interactive()
 line_graph = line_graph.interactive()
 st.altair_chart(line_graph)
 
