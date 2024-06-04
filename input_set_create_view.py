@@ -1,7 +1,7 @@
 import json
 import random
 import string
-from datetime import datetime
+from datetime import date, datetime
 from urllib.parse import unquote
 
 import pandas
@@ -10,9 +10,7 @@ import requests
 import streamlit as st
 from dateutil.parser import parse
 from dateutil.tz import tzoffset
-from datetime import date
 
-from token_handler import init_auth_state, sendTokenRefreshMessageToParent
 
 query_params = st.query_params
 
@@ -25,7 +23,7 @@ if app_id is None or app_id == "":
     app_id = "my-scheds"
 
 if api_base_url == "" or api_base_url is None:
-    api_base_url = "https://us1.api.staging.nxmv.xyz"
+    api_base_url = "https://api.cloud.nextmv.io"
 
 if error:
     st.stop()
@@ -183,11 +181,14 @@ for i in range(len(workers)):
 
         timezone = timezone_offset * 3600
 
-        workers["availability"][i][j]["start"] = start_datetime.replace(tzinfo=tzoffset(None, timezone)).isoformat()
-        workers["availability"][i][j]["end"] = end_datetime.replace(tzinfo=tzoffset(None, timezone)).isoformat()
+        workers["availability"][i][j]["start"] = start_datetime.replace(
+            tzinfo=tzoffset(None, timezone)
+        ).isoformat()
+        workers["availability"][i][j]["end"] = end_datetime.replace(
+            tzinfo=tzoffset(None, timezone)
+        ).isoformat()
 
 # Create a form for the user to input worker availability
-# TODO: make it possible to add more than 2 availabilities per worker
 with st.form(key="worker_availability_form"):
     worker_id = st.selectbox("Worker ID", workers["id"].tolist())
     availability_start = st.time_input("Availability Start")
@@ -229,8 +230,11 @@ with st.form(key="worker_availability_form"):
             workers.loc[workers["id"] == worker_id, "availability"].apply(
                 lambda x: x.append(new_availability)
             )
+            st.write(workers.loc[workers["id"] == worker_id, "availability"])
         else:
             # Overwrite existing availabilities with the new one
+            st.write(workers.loc[workers["id"] == worker_id, "availability"])
+            st.write(new_availability)
             workers.loc[workers["id"] == worker_id, "availability"] = [new_availability]
 
     with st.container():

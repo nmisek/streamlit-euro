@@ -26,7 +26,7 @@ if run_id is None or run_id == "":
     run_id = "devint-BGS39HySR"
 
 if api_base_url == "" or api_base_url is None:
-    api_base_url = "https://us1.api.staging.nxmv.xyz"
+    api_base_url = "https://api.cloud.nextmv.io"
 
 if error:
     st.stop()
