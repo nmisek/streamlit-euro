@@ -108,7 +108,7 @@ histogram = (
     .encode(
         x=alt.X("residual", bin=alt.Bin(step=bin_size), title="Residuals"),
         y="count()",
-        color="approach",
+        color=alt.Color("approach", scale=alt.Scale(scheme="category10")),
     )
 )
 
