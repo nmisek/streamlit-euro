@@ -92,11 +92,9 @@ scatter_plot = (
 )
 
 # add line y = x
-line = (
-    alt.Chart(pandas.DataFrame({"x": [df["count"].min(), df["count"].max()]}))
-    .mark_line(color="black")
-    .encode(x="x", y="x")
-)
+line = alt.Chart(
+    pandas.DataFrame({"x": [df["count"].min(), df["count"].max()]})
+).mark_line(color="black")
 
 
 # widen plot
