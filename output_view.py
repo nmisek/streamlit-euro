@@ -74,6 +74,7 @@ solutions = run_data["output"]["solutions"]
 df = pandas.DataFrame()
 for approach in solutions:
     approach_data = pandas.DataFrame(solutions[approach])
+    approach_data = approach_data[approach_data["count"].notnull()]
     approach_data["approach"] = approach
     df = pandas.concat([df, approach_data])
 
