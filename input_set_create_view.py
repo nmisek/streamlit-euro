@@ -86,6 +86,7 @@ def create_input(data_scenario, headers, id, name):
         url=response_json["upload_url"],
         data=serialize_input(data_scenario),
     )
+    st.write(serialize_input(data_scenario))
     if (
         response.status_code == 403 or response.status_code == 401
     ) and st.session_state.get("api_key") == None:
