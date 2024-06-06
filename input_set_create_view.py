@@ -335,7 +335,6 @@ if col2.button("Select run and create input set"):
         ]
         forecasts = pandas.concat([forecasts, approach_data])
         selected_columns = ["start", "end", "count"]
-        st.write(forecasts[selected_columns])
 
         # Create an input for the approach
         input = {
@@ -345,4 +344,4 @@ if col2.button("Select run and create input set"):
         inputs.append({"input_id": f"input-{random_string(5)}", "input_data": input})
     st.subheader("Forecast results for the selected run: ")
     st.write(forecasts)
-    # create_input_set(inputs)
+    create_input_set(inputs)
