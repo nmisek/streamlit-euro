@@ -322,8 +322,8 @@ if col2.button("Select run and create input set"):
     inputs = []
     for approach in solutions:
         approach_data = pandas.DataFrame(solutions[approach])
-        st.write(approach_data)
         approach_data["required_workers"] = math.ceil(approach_data["forecast"] / 3)
+        st.write(approach_data)
         approach_data["approach"] = approach
         approach_data = approach_data.rename(columns={"count": "historical_demand"})
         approach_data = approach_data.rename(columns={"start_time": "start"})
