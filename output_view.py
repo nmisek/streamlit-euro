@@ -91,6 +91,13 @@ scatter_plot = (
     )
 )
 
+# add line y = x
+line = (
+    alt.Chart(pandas.DataFrame({"x": [df["count"].min(), df["count"].max()]}))
+    .mark_line(color="black")
+    .encode(x="x", y="x")
+)
+
 # widen plot
 scatter_plot = scatter_plot.properties(width=800)
 scatter_plot = scatter_plot.interactive()
