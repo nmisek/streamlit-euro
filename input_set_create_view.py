@@ -1,4 +1,5 @@
 import json
+import math
 import random
 import string
 from datetime import date, datetime
@@ -321,10 +322,14 @@ if col2.button("Select run and create input set"):
     inputs = []
     for approach in solutions:
         approach_data = pandas.DataFrame(solutions[approach])
+        # create column called required_workers
+        approach_data["required_workers"] = math.ceil(approach_data["forecast"] / 3)
         approach_data["approach"] = approach
+        approach_data = approach_data.rename(columns={"count": "historical_demand"})
         approach_data = approach_data.rename(columns={"start_time": "start"})
         approach_data = approach_data.rename(columns={"end_time": "end"})
-
+        approach_data = approach_data.rename(columns={"required_workers": "count"})
+    
         # select only the forecasts for the date selected
         approach_data = approach_data[
             approach_data["date"] == date.strftime("%Y-%m-%d")
