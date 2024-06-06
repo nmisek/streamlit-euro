@@ -78,24 +78,23 @@ for approach in solutions:
     approach_data["approach"] = approach
     df = pandas.concat([df, approach_data])
 
-df["line_width"] = df["approach"].apply(lambda x: 3 if x == "ensemble" else 1)
+# df["line_width"] = df["approach"].apply(lambda x: 3 if x == "ensemble" else 1)
 
-line_graph = (
+scatter_plot = (
     alt.Chart(df)
-    .mark_line()
+    .mark_circle()
     .encode(
         x="count",
         y="forecast",
         color=alt.Color("approach", scale=alt.Scale(scheme="category10")),
-        size=alt.Size("line_width:Q", legend=None),
         tooltip=["count", "forecast", "approach"],
     )
 )
 
 # widen plot
-line_graph = line_graph.properties(width=800)
-line_graph = line_graph.interactive()
-st.altair_chart(line_graph)
+scatter_plot = scatter_plot.properties(width=800)
+scatter_plot = scatter_plot.interactive()
+st.altair_chart(scatter_plot)
 
 # compute the residuals
 df["residual"] = df["count"] - df["forecast"]
