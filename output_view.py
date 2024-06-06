@@ -99,9 +99,8 @@ line = (
 )
 
 # widen plot
-scatter_plot = scatter_plot.properties(width=800)
-scatter_plot = scatter_plot.interactive()
-st.altair_chart(scatter_plot)
+chart = alt.layer(scatter_plot, line).properties(width=800).interactive()
+st.altair_chart(chart)
 
 # compute the residuals
 df["residual"] = df["count"] - df["forecast"]
