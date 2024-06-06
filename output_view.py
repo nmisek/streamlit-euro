@@ -101,7 +101,7 @@ line = (
 # add trendlines to scatterplot
 trendlines = (
     alt.Chart(df)
-    .transform_regression("count", "forecast", method="linear")
+    .transform_regression("count", "forecast", groupby=["approach"])
     .mark_line()
     .encode(
         x="count",
@@ -109,6 +109,7 @@ trendlines = (
         color=alt.Color("approach", scale=alt.Scale(scheme="category10")),
     )
 )
+
 
 # widen plot
 chart = alt.layer(scatter_plot, line, trendlines).properties(width=800).interactive()
