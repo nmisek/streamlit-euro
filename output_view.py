@@ -104,8 +104,8 @@ trendlines = (
     .transform_regression("count", "forecast", groupby=["approach"])
     .mark_line()
     .encode(
-        x="count",
-        y="forecast",
+        x="count:Q",
+        y="forecast:Q",
         color=alt.Color("approach", scale=alt.Scale(scheme="category10")),
     )
 )
