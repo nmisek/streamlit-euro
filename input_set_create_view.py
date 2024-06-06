@@ -320,10 +320,9 @@ if col2.button("Select run and create input set"):
     solutions = result["output"]["solutions"]
     forecasts = pandas.DataFrame()
     inputs = []
+    st.write(solutions)
     for approach in solutions:
         approach_data = pandas.DataFrame(solutions[approach])
-        st.write(approach_data)
-        # create column called required_workers
         approach_data["required_workers"] = math.ceil(approach_data["forecast"] / 3)
         approach_data["approach"] = approach
         approach_data = approach_data.rename(columns={"count": "historical_demand"})
@@ -346,4 +345,4 @@ if col2.button("Select run and create input set"):
         inputs.append({"input_id": f"input-{random_string(5)}", "input_data": input})
     st.subheader("Forecast results for the selected run: ")
     st.write(forecasts)
-    create_input_set(inputs)
+    # create_input_set(inputs)
