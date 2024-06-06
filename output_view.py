@@ -105,7 +105,9 @@ bin_size = st.slider(
     "Select bin size for histogram", min_value=1, max_value=100, value=20
 )
 
+order = sorted(df["approach"].unique(), key=lambda x: (x == "ensemble", x))
 
+# Create the histogram
 histogram = (
     alt.Chart(df)
     .mark_bar(opacity=0.75)
@@ -113,6 +115,7 @@ histogram = (
         x=alt.X("residual", bin=alt.Bin(step=bin_size), title="Residuals"),
         y="count()",
         color=alt.Color("approach", scale=alt.Scale(scheme="category10")),
+        order=alt.Order("approach", sort="ascending"),
     )
 )
 
