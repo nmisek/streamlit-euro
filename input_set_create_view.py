@@ -86,7 +86,6 @@ def create_input(data_scenario, headers, id, name):
         url=response_json["upload_url"],
         data=serialize_input(data_scenario),
     )
-    st.write(serialize_input(data_scenario))
     if (
         response.status_code == 403 or response.status_code == 401
     ) and st.session_state.get("api_key") == None:
@@ -324,9 +323,7 @@ if col2.button("Select run and create input set"):
     for approach in solutions:
         approach_data = pandas.DataFrame(solutions[approach])
         approach_data["required_workers"] = np.ceil(approach_data["forecast"] / 3)
-        approach_data["required_workers"] = approach_data["required_workers"].astype(
-            int
-        )
+        approach_data.required_workers = approach_data.required_workers.astype(int)
         approach_data["approach"] = approach
         approach_data = approach_data.rename(columns={"count": "historical_demand"})
         approach_data = approach_data.rename(columns={"start_time": "start"})
